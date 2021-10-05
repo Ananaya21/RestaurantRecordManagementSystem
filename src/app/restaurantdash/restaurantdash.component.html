@@ -1,0 +1,113 @@
+
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h2>Restaurant Record App</h2>
+    <div class="d-flex">
+      <button (click)="clickAddResto()" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Restuarant</button>
+      <button routerLink="/login" class="btn btn-danger mx-3">Log out</button>
+    </div>
+  </div>
+</nav>
+<!-- jumbotron -->
+<div p-5 class="mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Restaurant Record Management System</h1>
+    <p class="col-md-8 fs-4">records can be saved using angular</p>
+    <a class="btn btn-primary btn-lg" target="_button" href="https://github.com/">Github</a>
+  </div>
+</div>
+<!-- table -->
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Restaurant Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Address</th>
+      <th scope="col">Services</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of allRestaurantData">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.mobile}}</td>
+      <td>{{data.address}}</td>
+      <td>{{data.services}}</td>
+      <td>{{data.action}}</td>
+
+      <td>
+         <button class="btn btn-info" (click)="onEditResto(data)">Edit</button> &nbsp;
+         <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Button Trigger Modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" placeholder="name" id="name">
+
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Emails</label>
+            <input type="text" formControlName="email" class="form-control" placeholder="Email" id="email">
+
+          </div>
+
+          <div class="mb-3">
+            <label  class="form-label">Address</label>
+            <input type="text" formControlName="address"class="form-control" placeholder="Address" id="address">
+
+          </div>
+
+          <div class="mb-3">
+            <label  class="form-label">Mobile</label>
+            <input type="number" formControlName="mobile" class="form-control" placeholder="Mobile" id="mobile">
+
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Services</label>
+            <input type="text" formControlName="service" class="form-control" placeholder="Service" id="service">
+
+          </div>
+
+          <div class="mb-3">
+            <label  class="form-label">Action</label>
+            <input type="text" formControlName="action" class="form-control" placeholder="Action" id="action">
+
+          </div>
+
+          <!-- <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Clear</button>
+        <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addResto()">Add Details</button>
+        <button *ngIf="showbtn" type="button" class="btn btn-primary" (click)="updateResto()">Update Details</button>
+      </div>
+    </div>
+  </div>
+</div>

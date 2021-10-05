@@ -1,0 +1,37 @@
+<p>signup works!</p>
+<p>login works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Restaurant Sign Up</h1>
+          <h5>Get free Membership</h5><hr/>
+        </div>
+        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+          <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input formControlName="name" placeholder="Enter Name :" type="text" class="form-control" id="name" >
+
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Email address</label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Enter Email Address:" id="email" >
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a routerLink="/login">Already have an account? click to signup </a>
+      </div>
+    </div>
+  </div>
+</div>
+
